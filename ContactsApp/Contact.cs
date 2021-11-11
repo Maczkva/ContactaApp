@@ -41,9 +41,9 @@ namespace ContactsApp
         public PhoneNumber phoneNumber = new PhoneNumber();
 
         /// <summary>
-        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
+        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1940)
         /// </summary>
-        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
+        private readonly DateTime _dateMinimum = new DateTime(1940, 01, 01);
 
         /// <summary>
         /// Метод, устанавливающий и возвращающий дату рождения контакта.
@@ -53,18 +53,18 @@ namespace ContactsApp
             get { return _dateOfBirth; }
             set
             {
-                //Дата рождения не может быть раньше 1 января 1900 года.
                 if (value < _dateMinimum)
                 {
                     throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения.\nВведите дату, начиная с 1900 года.");
+                        "Вы ввели неправильную дату рождения.\n" +
+                        "Введите дату, начиная с 1940 года.");
                 }
 
-                //Дата рождения не может быть больше нынешней даты.
                 if (value > DateTime.Now)
                 {
                     throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения.\nДата рождения не может быть больше, чем нынешняя.");
+                        "Вы ввели неправильную дату рождения.\n" +
+                        "Дата рождения не может быть больше, чем нынешняя.");
                 }
                 else
                     _dateOfBirth = value;
@@ -79,13 +79,13 @@ namespace ContactsApp
             get { return _idVk; }
             set
             {
-                //ID не может быть длиннее 15 символов.
                 if (value.Length > 15)
                 {
                     throw new ArgumentException(
-                        "ID Vkontakte не может превышать 15 символов.\nВведите ID, который не превышает 15 символов");
+                        "ID Vkontakte не может превышать 15 символов.\n" +
+                        "Введите ID, который не превышает 15 символов");
                 }
-                //Проверка на пустую строку.
+
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
@@ -103,21 +103,20 @@ namespace ContactsApp
             get { return _surname; }
             set
             {
-                //Фамилия не может быть длиннее 50 символов.
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую более чем из 50 символов.\nВведите фамилию, длиной до 50 символов.");
+                        "Вы ввели фамилию, состоящую более чем из 50 символов.\n" +
+                        "Введите фамилию, длиной до 50 символов.");
                 }
 
-                //Фамилия не может быть короче 2 символов.
                 if (value.Length < 2)
                 {
                     throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую менее чем из 2 символов.\nВведите фамилию, длиной более 2 символов.");
+                        "Вы ввели фамилию, состоящую менее чем из 2 символов.\n" +
+                        "Введите фамилию, длиной более 2 символов.");
                 }
 
-                //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
@@ -150,21 +149,20 @@ namespace ContactsApp
             get { return _name; }
             set
             {
-                //Имя не может быть длиннее 50 символов.
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели имя, состоящее более чем из 50 символов.\nВведите имя, длиной до 50 символов.");
+                        "Вы ввели имя, состоящее более чем из 50 символов.\n" +
+                        "Введите имя, длиной до 50 символов.");
                 }
 
-                //Имя не может быть короче 2 символов.
                 if (value.Length < 2)
                 {
                     throw new ArgumentException(
-                        "Вы ввели имя, состоящее менее чем из 2 символов.\nВведите имя, длиной более 2 символов.");
+                        "Вы ввели имя, состоящее менее чем из 2 символов.\n" +
+                        "Введите имя, длиной более 2 символов.");
                 }
 
-                //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
@@ -196,13 +194,12 @@ namespace ContactsApp
             get { return _email; }
             set
             {
-                //E-mail не может быть длиннее 50 символов.
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        "Вы ввели e-mail, длиной более чем 50 символов.\nВведите e-mail, длиной до 50 символов.");
+                        "Вы ввели e-mail, длиной более чем 50 символов.\n" +
+                        "Введите e-mail, длиной до 50 символов.");
                 }
-                //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
@@ -235,7 +232,8 @@ namespace ContactsApp
         /// <summary>
         /// Реализация клонирования
         /// </summary>
-        /// <returns>Возвращает объект - клон контакта, с полями: номер телефона, имя, фамилия, емейл, дата рождения, айди вк.</returns>
+        /// <returns>Возвращает объект - клон контакта, с полями:
+        /// номер телефона, имя, фамилия, емейл, дата рождения, айди вк.</returns>
         public object Clone()
         {
             return new Contact(phoneNumber.Number, Name, Surname, Email, DateOfBirth, IdVk);

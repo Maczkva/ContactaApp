@@ -18,25 +18,22 @@ namespace ContactsApp
             get { return _number; }
             set
             {
-                //Телефон может начинаться только с цифры 7.
-                if (value.ToString()[0] != '7')
+
+                if (value.ToString()[0] != '8')
                 {
-                    throw new ArgumentException("Введите номер телефона, начинающийся с 7.");
+                    throw new ArgumentException("Введите номер телефона, начинающийся с 8.");
                 }
 
-                //Проверка на количество цифр. Если больше 11, то исключение.
                 if (value > 99999999999)
                 {
                     throw new ArgumentException("Вы ввели больше 11 цифр, введите номер из 11 цифр.");
                 }
 
-                //Проверка на количество цифр. Если меньше 11, то исключение.
                 if (value < 10000000000)
                 {
                     throw new ArgumentException("Вы ввели меньше 11 цифр, введите номер, состоящий из 11 цифр.");
                 }
 
-                //Иначе присваиваем переменной номер.
                 else
                 {
                     _number = value;

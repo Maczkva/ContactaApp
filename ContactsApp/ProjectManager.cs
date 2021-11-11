@@ -7,15 +7,18 @@ using Newtonsoft.Json;
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс, реализующий сохранение данных в файл и загрузки из него.
+    /// Класс для сохранения данных в файл и загрузки из него.
     /// </summary>
     public class ProjectManager
     {
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string stringMyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                                      "\\ContactsApp" + "\\ContactsApp.notes";
+        public static readonly string FilesDirectoryPath =
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+            "\\Roaming" + "\\ContactApp" + "\\ContactApp.txt";
+
+        //"C:\\Users\\Arish\\AppData\\Roaming\\ContactApp\\ContactApp.txt";
 
         /// <summary>
         /// Метод, выполняющий запись в файл 
@@ -29,7 +32,7 @@ namespace ContactsApp
 
             var directoryFileContactApp = System.IO.Path.GetDirectoryName(fileContactAppPath);
 
-            //Проверка на папку. Если нет папки ContactsApp, то создаем ее.
+            //Проверка на папку. Если нет папки, то создаем ее.
             if (!System.IO.Directory.Exists(directoryFileContactApp))
             {
                 Directory.CreateDirectory(directoryFileContactApp);
