@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace ContactsApp
@@ -14,40 +12,34 @@ namespace ContactsApp
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string FilesDirectoryPath =
+        public static readonly string _DefaultFileDirectory =
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
             "\\Roaming" + "\\ContactApp" + "\\ContactApp.txt";
-
-        //"C:\\Users\\Arish\\AppData\\Roaming\\ContactApp\\ContactApp.txt";
 
         /// <summary>
         /// Метод, выполняющий запись в файл 
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
-        /// <param name="fileContactAppPath">Путь к файлу</param>
-        public static void SaveToFile(Project contact, string fileContactAppPath)
+        /// <param name="_DefaultFileDirectory">Путь к файлу</param>
+        public static void SaveToFile(Project contact, string _DefaultFileDirectory)
         {
-            // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            var directoryFileContactApp = System.IO.Path.GetDirectoryName(fileContactAppPath);
+            var directoryFileContactApp = Path.GetDirectoryName(_DefaultFileDirectory);
 
-            //Проверка на папку. Если нет папки, то создаем ее.
-            if (!System.IO.Directory.Exists(directoryFileContactApp))
+            if (Directory.Exists(directoryFileContactApp))
             {
                 Directory.CreateDirectory(directoryFileContactApp);
             }
 
-            //Проверка на файл. Еси нет файла, то создаем его.
-            if (!System.IO.File.Exists(fileContactAppPath))
+            if (File.Exists(_DefaultFileDirectory))
             {
-                File.Create(fileContactAppPath).Close();
+                File.Create(_DefaultFileDirectory).Close();
             }
 
-            using (StreamWriter sw = new StreamWriter(fileContactAppPath))
+            using (StreamWriter sw = new StreamWriter(_DefaultFileDirectory))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                // Вызов сериализатора и передача объекта сериализации
                 serializer.Serialize(writer, contact);
             }
         }
@@ -55,29 +47,31 @@ namespace ContactsApp
         /// <summary>
         /// Метод, выполняющий чтение из файла 
         /// </summary>
-        /// <param name="fileContactAppPath">Путь к файлу</param>
+        /// <param name="_DefaultFileDirectory">Путь к файлу</param>
         /// <returns>Экземпляр проекта, считанный из файла</returns>
-        public static Project LoadFromFile(string fileContactAppPath)
+        public static Project LoadFromFile(string _DefaultFileDirectory)
         {
-            //Переменная, в которую будет помещен результат десериализации
-            Project project = new Project();
 
-            //Экземпляр сериализатора
+            Project project = new Project();
             JsonSerializer serializer = new JsonSerializer();
 
-            //Проверка на наличие файла
-            if (System.IO.File.Exists(fileContactAppPath))
+            try
             {
-                //Открываем поток для чтения из файла с указанием пути
-                using (StreamReader sr = new StreamReader(fileContactAppPath))
-                using (JsonReader reader = new JsonTextReader(sr))
+                if (File.Exists(_DefaultFileDirectory))
                 {
-                    //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                    project = (Project)serializer.Deserialize<Project>(reader);
+                    using (StreamReader sr = new StreamReader(_DefaultFileDirectory))
+                    using (JsonReader reader = new JsonTextReader(sr))
+                    {                        
+                        project = (Project)serializer.Deserialize<Project>(reader);
+                    }
                 }
-            }
 
-            return project;
+                return project;
+            }
+            catch
+            {
+                return new Project();
+            }
         }
     }
 }

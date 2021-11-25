@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp
 { /// <summary>
@@ -41,23 +37,26 @@ namespace ContactsApp
         public PhoneNumber phoneNumber = new PhoneNumber();
 
         /// <summary>
-        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1940)
+        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
         /// </summary>
-        private readonly DateTime _dateMinimum = new DateTime(1940, 01, 01);
+        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
 
         /// <summary>
         /// Метод, устанавливающий и возвращающий дату рождения контакта.
         /// </summary>
         public DateTime DateOfBirth
         {
-            get { return _dateOfBirth; }
+            get 
+            { 
+                return _dateOfBirth;
+            }
             set
             {
                 if (value < _dateMinimum)
                 {
                     throw new ArgumentException(
                         "Вы ввели неправильную дату рождения.\n" +
-                        "Введите дату, начиная с 1940 года.");
+                        "Введите дату, начиная с 1900 года.");
                 }
 
                 if (value > DateTime.Now)
@@ -76,7 +75,10 @@ namespace ContactsApp
         /// </summary>
         public string IdVk
         {
-            get { return _idVk; }
+            get
+            { 
+                return _idVk; 
+            }
             set
             {
                 if (value.Length > 15)
@@ -100,7 +102,10 @@ namespace ContactsApp
         /// </summary>
         public string Surname
         {
-            get { return _surname; }
+            get 
+            {
+                return _surname;
+            }
             set
             {
                 if (value.Length > 50)
@@ -122,20 +127,11 @@ namespace ContactsApp
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
                 }
                 else
-                {
-                    //Вся строка в нижний регистр.
+                {                    
                     value.ToLower();
-
-                    //Представляем строку как массив чар.
                     char[] familyChar = value.ToCharArray();
-
-                    //1 элемент массива в верхний регистр.
                     familyChar[0] = char.ToUpper(familyChar[0]);
-
-                    //Переписываем в стринг
                     string familyString = new string(familyChar);
-
-                    //Вносим данные.
                     _surname = familyString;
                 }
             }
@@ -146,7 +142,10 @@ namespace ContactsApp
         /// </summary>
         public string Name
         {
-            get { return _name; }
+            get 
+            { 
+                return _name;
+            }
             set
             {
                 if (value.Length > 50)
@@ -165,22 +164,15 @@ namespace ContactsApp
 
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                    throw new ArgumentException("Вы ввели пустую строку." +
+                        " Повторите ввод.");
                 }
                 else
-                {
-                    //Вся строка в нижний регистр.
+                {                
                     value.ToLower();
-
-                    //Представляем строку как массив чар.
                     char[] nameChar = value.ToCharArray();
-
-                    //1 элемент массива в верхний регистр.
                     nameChar[0] = char.ToUpper(nameChar[0]);
-
-                    //Переписываем в стринг
                     string nameString = new string(nameChar);
-
                     _name = nameString;
                 }
             }
@@ -191,7 +183,10 @@ namespace ContactsApp
         /// </summary>
         public string Email
         {
-            get { return _email; }
+            get 
+            {
+                return _email;
+            }
             set
             {
                 if (value.Length > 50)
@@ -202,7 +197,8 @@ namespace ContactsApp
                 }
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                    throw new ArgumentException("Вы ввели пустую строку." +
+                        " Повторите ввод.");
                 }
                 else
                     _email = value;
@@ -218,8 +214,8 @@ namespace ContactsApp
         /// <param name="email"></param> E-mail контакта.
         /// <param name="dateOfBirth"></param> Дата рождения контакта.
         /// <param name="idVk"></param> ID Vk контакта.
-        public Contact(long phoneNumber, string name, string surname, string email, DateTime dateOfBirth,
-            string idVk)
+        public Contact(long phoneNumber, string name, string surname, string email,
+            DateTime dateOfBirth,string idVk)
         {
             this.phoneNumber.Number = phoneNumber;
             Name = name;
@@ -232,18 +228,12 @@ namespace ContactsApp
         /// <summary>
         /// Реализация клонирования
         /// </summary>
-        /// <returns>Возвращает объект - клон контакта, с полями:
-        /// номер телефона, имя, фамилия, емейл, дата рождения, айди вк.</returns>
+        /// <returns>Возвращает объект - клон контакта.
+        /// </returns>
         public object Clone()
         {
             return new Contact(phoneNumber.Number, Name, Surname, Email, DateOfBirth, IdVk);
         }
-
-        /// <summary>
-        /// Конструктор по умолчанию
-        /// </summary>
-        public Contact()
-        { }
     }
 }
 
