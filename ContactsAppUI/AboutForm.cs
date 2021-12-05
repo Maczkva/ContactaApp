@@ -29,7 +29,7 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void Click_Git(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/whiteelm/ContactsApp");
+            Process.Start("https://github.com/Maczkva/ContactsApp");
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace ContactsAppUI
         /// </summary>
         private void Click_Mail(object sender, EventArgs e)
         {
-            Process.Start("mailto://thiswhitenike@gmail.com");
+            Process.Start("mailto://amaczkovskaya@gmail.com");
         }
 
         private void label3_Click(object sender, EventArgs e)

@@ -123,5 +123,14 @@
   <ItemGroup>
     <None Include="Resources\BirthPic.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-плюс-2-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-карандаш-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-удалить-навсегда-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

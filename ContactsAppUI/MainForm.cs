@@ -129,7 +129,7 @@ namespace ContactsAppUI
         {
             if (ContactsListBox.SelectedIndex == -1)
             {
-                MessageBox.Show(@"Select the contact.", @"Error",
+                MessageBox.Show("Select the contact.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
