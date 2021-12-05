@@ -5,73 +5,72 @@ using Newtonsoft.Json;
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс для сохранения данных в файл и загрузки из него.
+    /// Класс реализует метод для сохранения объекта «Проект» в файл и метод загрузки проекта из файла.
+    /// Сохранение и загрузка осуществляются в один и тот же файл.
     /// </summary>
-    public class ProjectManager
+    public static class ProjectManager
     {
-        /// <summary>
-        /// Стандартный путь к файлу.
-        /// </summary>
-        public static readonly string _DefaultFileDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-            "\\Roaming" + "\\ContactApp" + "\\ContactApp.txt";
 
         /// <summary>
-        /// Метод, выполняющий запись в файл 
+        /// Путь по умолчанию по которому сохраняется файл.
         /// </summary>
-        /// <param name="contact">Экземпляр проекта для сериализации</param>
-        /// <param name="_DefaultFileDirectory">Путь к файлу</param>
-        public static void SaveToFile(Project contact, string _DefaultFileDirectory)
+        public static string FilePath()
         {
-            JsonSerializer serializer = new JsonSerializer();
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            return path + @"\ContactsApp\Contacts.json";
+        }
 
-            var directoryFileContactApp = Path.GetDirectoryName(_DefaultFileDirectory);
+        /// <summary>
+        /// Путь по умолчанию по которому создается папка для файла.
+        /// </summary>
+        public static string DirectoryPath()
+        {
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            return path + @"\ContactsApp\";
+        }
 
-            if (Directory.Exists(directoryFileContactApp))
+        /// <summary>
+        /// Метод сохранения данных в файл.
+        /// </summary>
+        /// <param name="data">Данные для сериализации.</param>
+        /// <param name="filepath">Путь до файла</param>
+        public static void SaveToFile(Project data, string filepath)
+        {
+            if (!Directory.Exists(DirectoryPath()))
             {
-                Directory.CreateDirectory(directoryFileContactApp);
+                Directory.CreateDirectory(DirectoryPath());
             }
-
-            if (File.Exists(_DefaultFileDirectory))
-            {
-                File.Create(_DefaultFileDirectory).Close();
-            }
-
-            using (StreamWriter sw = new StreamWriter(_DefaultFileDirectory))
+            var serializer = new JsonSerializer();
+            using (var sw = new StreamWriter(filepath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, contact);
+                serializer.Serialize(writer, data);
             }
         }
 
         /// <summary>
-        /// Метод, выполняющий чтение из файла 
+        /// Метод загрузки данных из файла.
         /// </summary>
-        /// <param name="_DefaultFileDirectory">Путь к файлу</param>
-        /// <returns>Экземпляр проекта, считанный из файла</returns>
-        public static Project LoadFromFile(string _DefaultFileDirectory)
+        /// /// <param name="filepath">Путь до файла</param>
+        public static Project LoadFromFile(string filepath)
         {
-
-            Project project = new Project();
-            JsonSerializer serializer = new JsonSerializer();
-
+            Project project;
+            if (!File.Exists(filepath))
+            {
+                return new Project();
+            }
+            var serializer = new JsonSerializer();
             try
             {
-                if (File.Exists(_DefaultFileDirectory))
-                {
-                    using (StreamReader sr = new StreamReader(_DefaultFileDirectory))
-                    using (JsonReader reader = new JsonTextReader(sr))
-                    {                        
-                        project = (Project)serializer.Deserialize<Project>(reader);
-                    }
-                }
-
-                return project;
+                using (var sr = new StreamReader(filepath))
+                using (JsonReader reader = new JsonTextReader(sr))
+                    project = serializer.Deserialize<Project>(reader);
             }
             catch
             {
                 return new Project();
             }
+            return project;
         }
     }
 }

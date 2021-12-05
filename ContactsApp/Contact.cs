@@ -1,240 +1,167 @@
 ﻿using System;
 
 namespace ContactsApp
-{ /// <summary>
-  /// Класс, содержащий контакт.
-  /// </summary>
+{
+
+    /// <summary>
+    /// Класс с данными контакта и интерфейсом ICloneable.
+    /// </summary>
     public class Contact : ICloneable
     {
         /// <summary>
-        /// Фамилия контакта.
+        /// Возвращает и задаёт фамилию.
         /// </summary>
         private string _surname;
 
         /// <summary>
-        /// Имя контакта.
+        /// Возвращает и задаёт имя.
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// E-mail контакта.
+        /// Возвращает и задаёт дату рождения.
+        /// </summary>
+        private DateTime _birthDate = DateTime.Today;
+
+        /// <summary>
+        /// Возвращает и задаёт e-mail.
         /// </summary>
         private string _email;
 
         /// <summary>
-        /// ID Vkontakte контакта.
+        /// Возвращает и задаёт ID личной страницы Вконтакте.
         /// </summary>
         private string _idVk;
 
         /// <summary>
-        /// Дата рождения контакта.
+        /// Возвращает и задаёт номер телефона.
         /// </summary>
-        private DateTime _dateOfBirth;
+        public PhoneNumber PhoneNumber { get; set; }
 
         /// <summary>
-        /// Телефонный номер контакта.
-        /// </summary>
-        public PhoneNumber phoneNumber = new PhoneNumber();
-
-        /// <summary>
-        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
-        /// </summary>
-        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий дату рождения контакта.
-        /// </summary>
-        public DateTime DateOfBirth
-        {
-            get 
-            { 
-                return _dateOfBirth;
-            }
-            set
-            {
-                if (value < _dateMinimum)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения.\n" +
-                        "Введите дату, начиная с 1900 года.");
-                }
-
-                if (value > DateTime.Now)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения.\n" +
-                        "Дата рождения не может быть больше, чем нынешняя.");
-                }
-                else
-                    _dateOfBirth = value;
-            }
-        }
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий ID Vk контакта.
-        /// </summary>
-        public string IdVk
-        {
-            get
-            { 
-                return _idVk; 
-            }
-            set
-            {
-                if (value.Length > 15)
-                {
-                    throw new ArgumentException(
-                        "ID Vkontakte не может превышать 15 символов.\n" +
-                        "Введите ID, который не превышает 15 символов");
-                }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
-                }
-                else
-                    _idVk = value;
-            }
-        }
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий фамилию контакта.
+        /// Свойство фамилии.
+        /// Первая буква преобразовывается к верхнему регистру, а также фамилия ограничена 50 символами по длине.
         /// </summary>
         public string Surname
         {
-            get 
-            {
-                return _surname;
-            }
+            get => _surname;
             set
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую более чем из 50 символов.\n" +
-                        "Введите фамилию, длиной до 50 символов.");
+                    throw new ArgumentException("Surname must not exceed 50 characters");
                 }
 
-                if (value.Length < 2)
+                if (value.Length == 0)
                 {
-                    throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую менее чем из 2 символов.\n" +
-                        "Введите фамилию, длиной более 2 символов.");
+                    throw new ArgumentException("Surname is not entered");
                 }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
-                }
-                else
-                {                    
-                    value.ToLower();
-                    char[] familyChar = value.ToCharArray();
-                    familyChar[0] = char.ToUpper(familyChar[0]);
-                    string familyString = new string(familyChar);
-                    _surname = familyString;
-                }
+                _surname = LettersRegister(value);
             }
         }
 
         /// <summary>
-        /// Метод, устанавливающий и возвращающий имя контакта.
+        /// Свойство имени.
+        /// Первая буква преобразовывается к верхнему регистру, а также имя ограничено 50 символами по длине.
         /// </summary>
         public string Name
         {
-            get 
-            { 
-                return _name;
-            }
+            get => _name;
             set
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException(
-                        "Вы ввели имя, состоящее более чем из 50 символов.\n" +
-                        "Введите имя, длиной до 50 символов.");
+                    throw new ArgumentException("Surname must not exceed 50 characters");
                 }
 
-                if (value.Length < 2)
+                if (value.Length == 0)
                 {
-                    throw new ArgumentException(
-                        "Вы ввели имя, состоящее менее чем из 2 символов.\n" +
-                        "Введите имя, длиной более 2 символов.");
+                    throw new ArgumentException("Name is not entered");
                 }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку." +
-                        " Повторите ввод.");
-                }
-                else
-                {                
-                    value.ToLower();
-                    char[] nameChar = value.ToCharArray();
-                    nameChar[0] = char.ToUpper(nameChar[0]);
-                    string nameString = new string(nameChar);
-                    _name = nameString;
-                }
+                _name = LettersRegister(value);
             }
         }
 
         /// <summary>
-        /// Метод, устанавливающий и возвращающий E-mail контакта.
+        /// Свойство е-мейла.
+        /// Емейл ограничен 50 символами по длине.
         /// </summary>
         public string Email
         {
-            get 
-            {
-                return _email;
-            }
+            get => _email;
             set
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException(
-                        "Вы ввели e-mail, длиной более чем 50 символов.\n" +
-                        "Введите e-mail, длиной до 50 символов.");
+                    throw new ArgumentException("e-mail must not exceed 50 characters");
                 }
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку." +
-                        " Повторите ввод.");
-                }
-                else
-                    _email = value;
+                _email = value;
             }
         }
 
         /// <summary>
-        /// Конструктор класса с 6 входными параметрами.
+        /// Свойство ID Вконтакте.
+        /// ID Вконтакте ограничен 30 символами по длине.
         /// </summary>
-        /// <param name="phoneNumber"></param> Номер телефона контакта.
-        /// <param name="name"></param> Имя контакта.
-        /// <param name="surname"></param> Фамилия контакта.
-        /// <param name="email"></param> E-mail контакта.
-        /// <param name="dateOfBirth"></param> Дата рождения контакта.
-        /// <param name="idVk"></param> ID Vk контакта.
-        public Contact(long phoneNumber, string name, string surname, string email,
-            DateTime dateOfBirth,string idVk)
+        public string IdVk
         {
-            this.phoneNumber.Number = phoneNumber;
-            Name = name;
-            Surname = surname;
-            Email = email;
-            DateOfBirth = dateOfBirth;
-            IdVk = idVk;
+            get => _idVk;
+            set
+            {
+                if (value.Length > 30)
+                {
+                    throw new ArgumentException("ID_vk must not exceed 30 characters");
+                }
+                _idVk = value;
+            }
         }
 
         /// <summary>
-        /// Реализация клонирования
+        /// Свойство даты рождения.
+        /// Дата рождения не может быть более текущей даты и не может быть менее 1900 года.
         /// </summary>
-        /// <returns>Возвращает объект - клон контакта.
-        /// </returns>
+        public DateTime BirthDate
+        {
+            get => _birthDate;
+            set
+            {
+                if (value >= DateTime.Now || value.Year <= 1900)
+                {
+                    throw new ArgumentException(@"Date of birth cannot be more than"+ 
+                     "the current date and cannot be less than 1900");
+                }
+                _birthDate = value;
+            }
+        }
+
+        /// <summary>
+        /// Метод изменяющий первую букву в слове на заглавную.
+        /// </summary>
+        /// <param name="word">Слово которое нужно изменить.</param>
+        /// <returns>Возвращает изименённое слово.</returns>
+        public static string LettersRegister(string word)
+        {
+            return char.ToUpper(word[0]) + word.Substring(1);
+        }
+
+        /// <summary>
+        /// Метод клонирования объекта класса Contact.
+        /// </summary>
+        /// <returns>Вовзвращает копию класса Contact.</returns>
         public object Clone()
         {
-            return new Contact(phoneNumber.Number, Name, Surname, Email, DateOfBirth, IdVk);
+            var phoneNumber = new PhoneNumber { Number = PhoneNumber.Number };
+            return new Contact
+            {
+                Surname = Surname,
+                Name = Name,
+                BirthDate = BirthDate,
+                Email = Email,
+                IdVk = IdVk,
+                PhoneNumber = phoneNumber
+            };
         }
+
     }
 }
-
 

@@ -3,45 +3,34 @@
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс, принимающий и возвращающий номер телефона учащегося.
+    /// Класс со свойствами номера телефона.
     /// </summary>
     public class PhoneNumber
     {
+        /// <summary>
+        /// Номер телефона.
+        /// </summary>
         private long _number;
 
         /// <summary>
-        /// Метод, устанавливающий и возвращающий номер контакта.
+        /// Свойство номера телефона.
+        /// Поле должно быть числовым и содержать ровно 11 цифр. Первая цифра должна быть ‘7’.
         /// </summary>
         public long Number
         {
-            get 
-            { 
-                return _number;
-            }
+            get => _number;
             set
             {
-                if (value.ToString()[0] != '7')
+                if (value.ToString().Length != 11 || value.ToString()[0] != '7')
                 {
-                    throw new ArgumentException("Введите номер телефона," +
-                        " начинающийся с 7.");
+                    throw new ArgumentException(message: "Phone number must start with 7 and be 11 digits long");
                 }
-
-                if (value > 99999999999)
+                if (value.ToString().Length == 0)
                 {
-                    throw new ArgumentException("Вы ввели больше 11 цифр," +
-                        " введите номер из 11 цифр.");
+                    throw new ArgumentException(message: "Phone number is not entered");
                 }
-
-                if (value < 10000000000)
-                {
-                    throw new ArgumentException("Вы ввели меньше 11 цифр," +
-                        " введите номер, состоящий из 11 цифр.");
-                }
-
-                    _number = value;
+                _number = value;
             }
         }
     }
-
-
 }
