@@ -17,7 +17,7 @@ namespace ContactsApp
         public static string FilePath()
         {
             var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            return path + @"\ContactsApp\Contacts.json";
+            return path + @"\ContactsApp\ContactsApp.json";
         }
 
         /// <summary>

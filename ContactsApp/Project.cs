@@ -12,7 +12,7 @@ namespace ContactsApp
         /// <summary>
         /// Коллекция контактов.
         /// </summary>
-        public List<Contact> Contacts = new List<Contact>();
+        public List<Contact> Contacts { get; set; } = new List<Contact>();
 
         /// <summary>
         /// Сортировка листа.
