@@ -27,7 +27,7 @@ namespace ContactsAppUI
                 emailTextBox.Text = value.Email;
                 if(value.PhoneNumber.Number != 0)
                     phoneTextBox.Text = value.PhoneNumber.Number.ToString();
-                birthDatePicker.Value = value.BirthDate;
+                birthDatePicker.Value = value.DateOfBirth;
             }
         }
 
@@ -84,7 +84,7 @@ namespace ContactsAppUI
                 TempContact.Name = nameTextBox.Text;
                 TempContact.IdVk = idVkTextBox.Text;
                 TempContact.Email = emailTextBox.Text;
-                TempContact.BirthDate = birthDatePicker.Value;
+                TempContact.DateOfBirth = birthDatePicker.Value;
                 var phoneNumber = new PhoneNumber
                 {
                     Number = Convert.ToInt64(phoneTextBox.Text)

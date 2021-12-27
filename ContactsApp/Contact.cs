@@ -21,7 +21,7 @@ namespace ContactsApp
         /// <summary>
         /// Возвращает и задаёт дату рождения.
         /// </summary>
-        private DateTime _birthDate = DateTime.Today;
+        private DateTime _birthDay = DateTime.Today;
 
         /// <summary>
         /// Возвращает и задаёт e-mail.
@@ -120,9 +120,9 @@ namespace ContactsApp
         /// Свойство даты рождения.
         /// Дата рождения не может быть более текущей даты и не может быть менее 1900 года.
         /// </summary>
-        public DateTime BirthDate
+        public DateTime DateOfBirth
         {
-            get => _birthDate;
+            get => _birthDay;
             set
             {
                 if (value >= DateTime.Now || value.Year <= 1900)
@@ -130,7 +130,7 @@ namespace ContactsApp
                     throw new ArgumentException(@"Date of birth cannot be more than"+ 
                      "the current date and cannot be less than 1900");
                 }
-                _birthDate = value;
+                _birthDay = value;
             }
         }
 
@@ -155,7 +155,7 @@ namespace ContactsApp
             {
                 Surname = Surname,
                 Name = Name,
-                BirthDate = BirthDate,
+                DateOfBirth = DateOfBirth,
                 Email = Email,
                 IdVk = IdVk,
                 PhoneNumber = phoneNumber

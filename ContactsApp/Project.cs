@@ -59,7 +59,7 @@ namespace ContactsApp
         public static List<Contact> BirthDayContactsFind(DateTime date, Project project)
         {
             var foundContacts = project.Contacts.Where(contact =>
-                contact.BirthDate.Month == date.Month && contact.BirthDate.Day == date.Day);
+                contact.DateOfBirth.Month == date.Month && contact.DateOfBirth.Day == date.Day);
             var birthDayContacts = new Project();
             foreach (var contact in foundContacts)
             {

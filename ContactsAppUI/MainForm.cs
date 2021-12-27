@@ -57,7 +57,7 @@ namespace ContactsAppUI
             phoneTextBox.Text = $@"+{contactsToView[index].PhoneNumber.Number}";
             emailTextBox.Text = contactsToView[index].Email;
             idVkTextBox.Text = contactsToView[index].IdVk;
-            birthDateBox.Text = contactsToView[index].BirthDate.ToString("dd.MM.yyyy");
+            birthDateBox.Text = contactsToView[index].DateOfBirth.ToString("dd.MM.yyyy");
         }
 
         /// <summary>
