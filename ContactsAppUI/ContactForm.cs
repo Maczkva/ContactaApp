@@ -107,13 +107,13 @@ namespace ContactsAppUI
             if (surnameTextBox.BackColor == Color.LightCoral)
             {
                 throw new ArgumentException(message: @"The name was entered incorrectly.
-It must be composed of the letters of the Russian alphabet.
+It must be composed of the letters of the Russian and english alphabet.
 You can enter a double name separated by a dash.");
             }
             if (nameTextBox.BackColor == Color.LightCoral)
             {
                 throw new ArgumentException(message: @"The surname was entered incorrectly.
-It must be composed of the letters of the Russian alphabet.
+It must be composed of the letters of the Russian and english alphabet.
 You can enter a double name separated by a dash.");
             }
             if (phoneTextBox.BackColor == Color.LightCoral)
@@ -134,9 +134,9 @@ VkId should consist of Latin letters.It is possible to enter a underscore betwee
         }
 
         /// <summary>
-        /// Паттерн имени и фамилии. Русские буквы и возможность написания тире для двойных имен.
+        /// Паттерн имени и фамилии. Русские и английские буквы и возможность написания тире для двойных имен.
         /// </summary>
-        private const string RegexName = "^[а-яА-Яa-zA-Z]+(-[а-яА-Я]+)?$";
+        private const string RegexName = "^[а-яА-Яa-zA-Z]+(-[а-яА-Яa-zA-Z]+)?$";
 
         /// <summary>
         /// Паттерн номера телефона где номер начинается с 7 и имеет длину в 11 цифр. 
@@ -151,7 +151,7 @@ VkId should consist of Latin letters.It is possible to enter a underscore betwee
         /// <summary>
         /// Паттерн айди вк. Ввод латинских букв и возможность ввода _ между словами.
         /// </summary>
-        private const string RegexIdVk = "^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)+(_[a-zA-Z0-9]+)?$";
+        private const string RegexIdVk = "^[a-zA-Z0-9]+(_[a-zA-Z0-9]+)?$";
 
         /// <summary>
         /// Проверка фамилии на ввод по патерну.
