@@ -29,7 +29,6 @@ namespace ContactsAppUI
         /// <summary>
         /// Путь к файлу.
         /// </summary>
-        
         private readonly string _filePath = ProjectManager.FilePath();
 
         /// <summary>
@@ -110,7 +109,7 @@ namespace ContactsAppUI
         {
             if (ContactsListBox.SelectedIndex == -1)
             {
-                MessageBox.Show(@"Select the contact.", @"Error",
+                MessageBox.Show("Select the contact.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -139,14 +138,14 @@ namespace ContactsAppUI
         {
             if (ContactsListBox.SelectedIndex == -1)
             {
-                MessageBox.Show(@"Select the contact.", @"Error",
+                MessageBox.Show("Select the contact.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 var selectedIndex = ContactsListBox.SelectedIndex;
-                var result = MessageBox.Show($@"Do you really want to delete this contact: 
-                    {_project.Contacts[selectedIndex].Surname}?", @"Confirmation",
+                var result = MessageBox.Show($"Do you really want to delete this contact:" +
+                    $"{_project.Contacts[selectedIndex].Surname}?", "Confirmation",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                 if (result != DialogResult.OK)
                 {

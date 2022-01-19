@@ -12,7 +12,7 @@ namespace ContactsApp.UnitTests
         {
             //Setup
             var sourceProject = PrepareProject();
-            var testDataFolder = Common.DataFolderForTest();
+            var testDataFolder = GenerationData.DataFolderForTest();
             var actualFileName = testDataFolder + @"\actualProject.json";
             var expectedFileName = testDataFolder + @"\expectedProject.json";
             if (File.Exists(actualFileName))
@@ -38,7 +38,7 @@ namespace ContactsApp.UnitTests
             //Setup
             var project = PrepareProject();
             
-            var testDataFolder = Common.DataFolderForTest()+"CreateTest";
+            var testDataFolder = GenerationData.DataFolderForTest()+"CreateTest";
             var testFileName = testDataFolder + @"CreateFolderTest";
             if (Directory.Exists(testDataFolder))
             {
@@ -57,7 +57,7 @@ namespace ContactsApp.UnitTests
         {
             //Setup
             var expectedProject = PrepareProject();
-            var testDataFolder = Common.DataFolderForTest();
+            var testDataFolder = GenerationData.DataFolderForTest();
             var testFileName = testDataFolder + @"\expectedProject.json";
 
             //Act
@@ -71,7 +71,7 @@ namespace ContactsApp.UnitTests
         public void LoadFromFile_UnCorrectFile_ReturnEmptyProject()
         {
             //Setup
-            var testDataFolder = Common.DataFolderForTest();
+            var testDataFolder = GenerationData.DataFolderForTest();
             var testFileName = testDataFolder + @"\defectiveProject.json";
 
             //Act
@@ -85,7 +85,7 @@ namespace ContactsApp.UnitTests
         public void LoadFromFile_UnCorrectPath_ReturnEmptyProject()
         {
             //Setup
-            var testFileName = Common.DataFolderForTest()+"wrong";
+            var testFileName = GenerationData.DataFolderForTest()+"wrong";
 
             //Act
             var actualProject = ProjectManager.LoadFromFile(testFileName);
@@ -98,7 +98,7 @@ namespace ContactsApp.UnitTests
         public void FilePath_GoodFilePath_ReturnSamePath()
         {
             //Setup
-            var expectedPath = Common.FilePath();
+            var expectedPath = GenerationData.FilePath();
 
             //Act
             var actualPath = ProjectManager.FilePath();
@@ -111,7 +111,7 @@ namespace ContactsApp.UnitTests
         public void DirectoryPath_GoodDirectoryPath_ReturnSameDirectory()
         {
             //Setup
-            var expectedPath = Common.DirectoryPath();
+            var expectedPath = GenerationData.DirectoryPath();
 
             //Act
             var actualPath = ProjectManager.DirectoryPath();

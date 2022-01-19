@@ -9,7 +9,6 @@ namespace ContactsAppUI
     /// </summary>
     public partial class AboutForm : Form
     {
-
         public AboutForm()
         {
             InitializeComponent();

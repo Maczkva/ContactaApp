@@ -161,9 +161,9 @@ namespace ContactsApp
             };
         }
 
-        /// <summary>Determines whether the specified object is equal to the current object.</summary>
-        /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+        /// <summary>Определяет, равен ли указанный объект текущему объекту.</summary>
+        /// <param name="obj">Объект для сравнения с текущим объектом.</param>
+        /// <returns>true, если указанный объект равен текущему объекту; в противном случае false.</returns>
         public override bool Equals(object obj)
         {
             var toCompareWith = obj as Contact;
