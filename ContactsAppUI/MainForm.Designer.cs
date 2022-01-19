@@ -115,7 +115,6 @@
             this.nameLabel.Size = new System.Drawing.Size(38, 13);
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Name:";
-            this.nameLabel.Click += new System.EventHandler(this.nameLabel_Click);
             // 
             // birthDayLabel
             // 
@@ -237,7 +236,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenu_ItemClick);
             // 
@@ -254,21 +253,21 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.addToolStripMenuItem.Text = "Add Contact";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenu_ItemClick);
             // 
             // editContactToolStripMenuItem
             // 
             this.editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
-            this.editContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.editContactToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.editContactToolStripMenuItem.Text = "Edit Contact";
             this.editContactToolStripMenuItem.Click += new System.EventHandler(this.EditContactToolStripMenu_ItemClick);
             // 
             // removeContactToolStripMenuItem
             // 
             this.removeContactToolStripMenuItem.Name = "removeContactToolStripMenuItem";
-            this.removeContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.removeContactToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.removeContactToolStripMenuItem.Text = "Remove Contact";
             this.removeContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactToolStripMenu_ItemClick);
             // 
@@ -283,7 +282,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenu_ItemClick);
             // 
@@ -302,7 +301,7 @@
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.deleteButton.BackColor = System.Drawing.SystemColors.Window;
-            this.deleteButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.icons8_удалить_навсегда_96;
+            this.deleteButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.DeleteButtonIcon30x30;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteButton.FlatAppearance.BorderSize = 0;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -319,7 +318,7 @@
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.editButton.BackColor = System.Drawing.SystemColors.Window;
-            this.editButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.icons8_карандаш_64;
+            this.editButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.EditButtonIcon30x30;
             this.editButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.editButton.FlatAppearance.BorderSize = 0;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -336,7 +335,7 @@
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addButton.BackColor = System.Drawing.SystemColors.Window;
-            this.addButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.icons8_плюс_2_96;
+            this.addButton.BackgroundImage = global::ContactsAppUI.Properties.Resources.AddButtonIcon30x30;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -379,13 +378,13 @@
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // ExitToolStripMenuItem1
             // 
             this.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
-            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(92, 22);
             this.ExitToolStripMenuItem1.Text = "Exit";
             this.ExitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenu_ItemClick);
             // 
@@ -396,27 +395,27 @@
             this.editContactToolStripMenuItem1,
             this.deleteContactToolStripMenuItem});
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.editToolStripMenuItem1.Text = "Edit";
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.addToolStripMenuItem1.Text = "Add Contact";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.AddToolStripMenu_ItemClick);
             // 
             // editContactToolStripMenuItem1
             // 
             this.editContactToolStripMenuItem1.Name = "editContactToolStripMenuItem1";
-            this.editContactToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.editContactToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.editContactToolStripMenuItem1.Text = "Edit Contact";
             this.editContactToolStripMenuItem1.Click += new System.EventHandler(this.EditContactToolStripMenu_ItemClick);
             // 
             // deleteContactToolStripMenuItem
             // 
             this.deleteContactToolStripMenuItem.Name = "deleteContactToolStripMenuItem";
-            this.deleteContactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteContactToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.deleteContactToolStripMenuItem.Text = "Delete Contact";
             this.deleteContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactToolStripMenu_ItemClick);
             // 
@@ -425,13 +424,13 @@
             this.aboutToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem2});
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(40, 20);
             this.aboutToolStripMenuItem1.Text = "Help";
             // 
             // aboutToolStripMenuItem2
             // 
             this.aboutToolStripMenuItem2.Name = "aboutToolStripMenuItem2";
-            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(103, 22);
             this.aboutToolStripMenuItem2.Text = "About";
             this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.AboutToolStripMenu_ItemClick);
             // 

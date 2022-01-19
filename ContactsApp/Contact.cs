@@ -2,7 +2,6 @@
 
 namespace ContactsApp
 {
-
     /// <summary>
     /// Класс с данными контакта и интерфейсом ICloneable.
     /// </summary>
@@ -21,7 +20,7 @@ namespace ContactsApp
         /// <summary>
         /// Возвращает и задаёт дату рождения.
         /// </summary>
-        private DateTime _birthDay = DateTime.Today;
+        private DateTime _birthDate = DateTime.Today;
 
         /// <summary>
         /// Возвращает и задаёт e-mail.
@@ -32,11 +31,6 @@ namespace ContactsApp
         /// Возвращает и задаёт ID личной страницы Вконтакте.
         /// </summary>
         private string _idVk;
-
-        /// <summary>
-        /// Возвращает и задаёт номер телефона.
-        /// </summary>
-        public PhoneNumber PhoneNumber { get; set; }
 
         /// <summary>
         /// Свойство фамилии.
@@ -59,6 +53,11 @@ namespace ContactsApp
                 _surname = LettersRegister(value);
             }
         }
+
+        /// <summary>
+        /// Возвращает и задаёт номер телефона.
+        /// </summary>
+        public PhoneNumber PhoneNumber { get; set; }
 
         /// <summary>
         /// Свойство имени.
@@ -122,15 +121,15 @@ namespace ContactsApp
         /// </summary>
         public DateTime DateOfBirth
         {
-            get => _birthDay;
+            get => _birthDate;
             set
             {
                 if (value >= DateTime.Now || value.Year <= 1900)
                 {
-                    throw new ArgumentException(@"Date of birth cannot be more than"+ 
-                     "the current date and cannot be less than 1900");
+                    throw new ArgumentException("Date of birth cannot be more than\n " +
+                        "the current date and cannot be less than 1900");
                 }
-                _birthDay = value;
+                _birthDate = value;
             }
         }
 
@@ -162,6 +161,24 @@ namespace ContactsApp
             };
         }
 
+        /// <summary>Determines whether the specified object is equal to the current object.</summary>
+        /// <param name="obj">The object to compare with the current object.</param>
+        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            var toCompareWith = obj as Contact;
+            if (toCompareWith == null)
+            {
+                return false;
+            }
+
+            return Name == toCompareWith.Name &&
+                   Surname == toCompareWith.Surname &&
+                   PhoneNumber.Number == toCompareWith.PhoneNumber.Number &&
+                   IdVk == toCompareWith.IdVk &&
+                   Email == toCompareWith.Email &&
+                   DateOfBirth == toCompareWith.DateOfBirth;
+        }
     }
 }
 

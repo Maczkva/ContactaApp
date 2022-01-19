@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ContactsAppUI
@@ -38,11 +37,6 @@ namespace ContactsAppUI
         private void Click_Mail(object sender, EventArgs e)
         {
             Process.Start("mailto://amaczkovskaya@gmail.com");
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

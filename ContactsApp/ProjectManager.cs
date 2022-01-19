@@ -17,7 +17,7 @@ namespace ContactsApp
         public static string FilePath()
         {
             var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            return path + @"\ContactsApp\ContactsApp.json";
+            return path + @"\ContactsApp\Contacts.json";
         }
 
         /// <summary>
@@ -33,15 +33,16 @@ namespace ContactsApp
         /// Метод сохранения данных в файл.
         /// </summary>
         /// <param name="data">Данные для сериализации.</param>
-        /// <param name="filepath">Путь до файла</param>
-        public static void SaveToFile(Project data, string filepath)
+        /// <param name="filePath">Путь до файла.</param>
+        /// <param name="directoryPath">Путь до папки.</param>
+        public static void SaveToFile(Project data, string filePath, string directoryPath)
         {
-            if (!Directory.Exists(DirectoryPath()))
+            if (!Directory.Exists(directoryPath))
             {
-                Directory.CreateDirectory(DirectoryPath());
+                Directory.CreateDirectory(directoryPath);
             }
             var serializer = new JsonSerializer();
-            using (var sw = new StreamWriter(filepath))
+            using (var sw = new StreamWriter(filePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, data);

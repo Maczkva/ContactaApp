@@ -12,61 +12,41 @@ namespace ContactsApp
         /// <summary>
         /// Коллекция контактов.
         /// </summary>
-        public List<Contact> Contacts { get; set; } = new List<Contact>();
+        public List<Contact> Contacts = new List<Contact>();
 
         /// <summary>
         /// Сортировка листа.
         /// </summary>
-        /// <param name="sortProject"> Лист для сортировки.</param>
+        /// <param name="contacts"> Лист для сортировки.</param>
         /// <returns></returns>
-        public static List<Contact> SortContacts(List<Contact> sortProject)
+        public List<Contact> SortContacts(List<Contact> contacts)
         {
-            var sortedUsers = from u in sortProject orderby u.Surname select u;
-            return sortedUsers.ToList();
+            var sortedContacts = from u in contacts orderby u.Surname select u;
+            return sortedContacts.ToList();
         }
 
         /// <summary>
         /// Поиск контакта по строке.
         /// </summary>
         /// <param name="substringForSearch"> Строка по которой ведется поиск.</param>
-        /// <param name="project"> Список контактов для поиска.</param>
+        /// <param name="contacts"> Список контактов для поиска.</param>
         /// <returns></returns>
-        public static Project SortContacts(string substringForSearch, Project project)
+        public List<Contact> SortContacts(string substringForSearch, List<Contact> contacts)
         {
-            var findProject = new Project();
+            var findProject = contacts;
             if (substringForSearch == "")
             {
-                findProject = project;
                 return findProject;
             }
-            var foundContacts = project.Contacts.Where(contact =>
+            findProject = contacts.Where(contact =>
                 contact.Surname.StartsWith(substringForSearch, StringComparison.OrdinalIgnoreCase) ||
-                contact.Name.StartsWith(substringForSearch, StringComparison.OrdinalIgnoreCase));
-            foreach (var contact in foundContacts)
+                contact.Name.StartsWith(substringForSearch, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (findProject.Count == 0)
             {
-                findProject.Contacts.Add(contact);
+                return findProject;
             }
-            findProject.Contacts = SortContacts(findProject.Contacts);
+            findProject = SortContacts(findProject);
             return findProject;
-        }
-
-        /// <summary>
-        /// Поиск контактов у которых день рождения.
-        /// </summary>
-        /// <param name="date"> Сегодняшний день.</param>
-        /// <param name="project"> Контакты для поиска.</param>
-        /// <returns></returns>
-        public static List<Contact> BirthDayContactsFind(DateTime date, Project project)
-        {
-            var foundContacts = project.Contacts.Where(contact =>
-                contact.DateOfBirth.Month == date.Month && contact.DateOfBirth.Day == date.Day);
-            var birthDayContacts = new Project();
-            foreach (var contact in foundContacts)
-            {
-                birthDayContacts.Contacts.Add(contact);
-            }
-            var sortedUsers = SortContacts(birthDayContacts.Contacts);
-            return sortedUsers;
         }
     }
 }

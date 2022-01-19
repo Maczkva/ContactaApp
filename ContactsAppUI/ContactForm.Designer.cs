@@ -203,12 +203,12 @@
             this.birthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthDatePicker.Location = new System.Drawing.Point(76, 74);
             this.birthDatePicker.Margin = new System.Windows.Forms.Padding(5);
-            this.birthDatePicker.MaxDate = new System.DateTime(2020, 10, 27, 0, 0, 0, 0);
+            this.birthDatePicker.MaxDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.birthDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.birthDatePicker.Name = "birthDatePicker";
             this.birthDatePicker.Size = new System.Drawing.Size(95, 20);
             this.birthDatePicker.TabIndex = 3;
-            this.birthDatePicker.Value = new System.DateTime(2020, 10, 27, 0, 0, 0, 0);
+            this.birthDatePicker.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
             // ContactForm
             // 

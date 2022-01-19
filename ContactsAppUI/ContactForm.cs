@@ -11,21 +11,21 @@ namespace ContactsAppUI
     /// </summary>
     public partial class ContactForm : Form
     {
-        private Contact _tempContact;
+        private Contact _contact;
         /// <summary>
         /// Временный проект для добавления или редактирования контакта.
         /// </summary>
-        public Contact TempContact
+        public Contact Contact
         {
-            get => _tempContact;
+            get => _contact;
             set
             {
-                _tempContact = value;
+                _contact = value;
                 surnameTextBox.Text = value.Surname;
                 nameTextBox.Text = value.Name;
                 idVkTextBox.Text = value.IdVk;
                 emailTextBox.Text = value.Email;
-                if(value.PhoneNumber.Number != 0)
+                if (value.PhoneNumber.Number != 0)
                     phoneTextBox.Text = value.PhoneNumber.Number.ToString();
                 birthDatePicker.Value = value.DateOfBirth;
             }
@@ -80,16 +80,16 @@ namespace ContactsAppUI
             try
             {
                 CheckCorrect();
-                TempContact.Surname = surnameTextBox.Text;
-                TempContact.Name = nameTextBox.Text;
-                TempContact.IdVk = idVkTextBox.Text;
-                TempContact.Email = emailTextBox.Text;
-                TempContact.DateOfBirth = birthDatePicker.Value;
+                Contact.Surname = surnameTextBox.Text;
+                Contact.Name = nameTextBox.Text;
+                Contact.IdVk = idVkTextBox.Text;
+                Contact.Email = emailTextBox.Text;
+                Contact.DateOfBirth = birthDatePicker.Value;
                 var phoneNumber = new PhoneNumber
                 {
-                    Number = Convert.ToInt64(phoneTextBox.Text)
+                    Number = phoneTextBox.Text != "" ? Convert.ToInt64(phoneTextBox.Text) : 0
                 };
-                TempContact.PhoneNumber = phoneNumber;
+                Contact.PhoneNumber = phoneNumber;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception exception)
@@ -106,35 +106,36 @@ namespace ContactsAppUI
         {
             if (surnameTextBox.BackColor == Color.LightCoral)
             {
-                throw new ArgumentException(message: @"The name was entered incorrectly.
-It must be composed of the letters of the Russian and english alphabet.
-You can enter a double name separated by a dash.");
+                throw new ArgumentException(message: "The name was entered incorrectly.\n" +
+                    "It must be composed of the letters of the Russian and latin alphabet.\n" +
+                    "You can enter a double name separated by a dash.");
             }
             if (nameTextBox.BackColor == Color.LightCoral)
             {
-                throw new ArgumentException(message: @"The surname was entered incorrectly.
-It must be composed of the letters of the Russian and english alphabet.
-You can enter a double name separated by a dash.");
+                throw new ArgumentException(message: "The surname was entered incorrectly.\n" +
+                    "It must be composed of the letters of the Russian and latin alphabet.\n" +
+                    "You can enter a double name separated by a dash.");
             }
             if (phoneTextBox.BackColor == Color.LightCoral)
             {
-                throw new ArgumentException(message: @"The phone number was entered incorrectly.
-The number must be digits and no longer than eleven digits.");
+                throw new ArgumentException(message: "The phone number was entered incorrectly.\n" +
+                    "The number must be digits and no longer than eleven digits.");
             }
             if (emailTextBox.BackColor == Color.LightCoral)
             {
-                throw new ArgumentException(message: @"Email entered incorrectly.
-Email should be composed of Latin letters, and also contain @ and a dot.");
+                throw new ArgumentException(message: "Email entered incorrectly.\n" +
+                    "Email should be composed of Latin letters, and also contain @ and a dot.");
             }
             if (idVkTextBox.BackColor == Color.LightCoral)
             {
-                throw new ArgumentException(message: @"IdVK entered incorrectly.
-VkId should consist of Latin letters.It is possible to enter a underscore between the two parts.");
+                throw new ArgumentException(message: "IdVK entered incorrectly.\n" +
+                    "VkId should consist of Latin letters.It is possible to enter a" +
+                    " underscore between the two parts.");
             }
         }
 
         /// <summary>
-        /// Паттерн имени и фамилии. Русские и английские буквы и возможность написания тире для двойных имен.
+        /// Паттерн имени и фамилии. Русские буквы и возможность написания тире для двойных имен.
         /// </summary>
         private const string RegexName = "^[а-яА-Яa-zA-Z]+(-[а-яА-Яa-zA-Z]+)?$";
 

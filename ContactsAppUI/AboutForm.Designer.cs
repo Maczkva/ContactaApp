@@ -68,7 +68,6 @@
             this.label3.Size = new System.Drawing.Size(143, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Author: Arina Maczkovskaya";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // MailLabel
             // 
@@ -89,9 +88,9 @@
             this.GitLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.GitLabel.Location = new System.Drawing.Point(68, 178);
             this.GitLabel.Name = "GitLabel";
-            this.GitLabel.Size = new System.Drawing.Size(213, 13);
+            this.GitLabel.Size = new System.Drawing.Size(210, 13);
             this.GitLabel.TabIndex = 4;
-            this.GitLabel.Text = " https://github.com/Maczkva/ContactsApp";
+            this.GitLabel.Text = "https://github.com/Maczkva/ContactsApp";
             this.GitLabel.Click += new System.EventHandler(this.Click_Git);
             // 
             // label6
@@ -102,7 +101,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "2021 Arina Maczkovskaya ©";
+            this.label6.Text = "2022 Arina Maczkovskaya ©";
             // 
             // button1
             // 
