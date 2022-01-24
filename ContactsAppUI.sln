@@ -11,6 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsApp.UnitTests", "te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{AEBB7C67-7E30-46DB-B0BA-3A37FE8D4DED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7E2972B2-01D5-4176-9793-1A48D0BC7B79}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Календарный план.docx = Documentation\Календарный план.docx
+		Documentation\Пояснительная записка.docx = Documentation\Пояснительная записка.docx
+		Documentation\Ретроспектива.docx = Documentation\Ретроспектива.docx
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Installer", "Installer\Installer.csproj", "{C5BC8463-FBB4-4B4A-B679-6E28F6A6EEE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +38,10 @@ Global
 		{D0B0F008-1FE6-4982-8708-D3DE39B98A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0B0F008-1FE6-4982-8708-D3DE39B98A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0B0F008-1FE6-4982-8708-D3DE39B98A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5BC8463-FBB4-4B4A-B679-6E28F6A6EEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5BC8463-FBB4-4B4A-B679-6E28F6A6EEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5BC8463-FBB4-4B4A-B679-6E28F6A6EEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5BC8463-FBB4-4B4A-B679-6E28F6A6EEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
