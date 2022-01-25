@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{AEBB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7E2972B2-01D5-4176-9793-1A48D0BC7B79}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\Календарный план.docx = Documentation\Календарный план.docx
-		Documentation\Пояснительная записка.docx = Documentation\Пояснительная записка.docx
-		Documentation\Ретроспектива.docx = Documentation\Ретроспектива.docx
+		Documentation\Calendar plan and estimate.docx = Documentation\Calendar plan and estimate.docx
+		Documentation\Explanatory note.docx = Documentation\Explanatory note.docx
+		Documentation\Retrospective.docx = Documentation\Retrospective.docx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{7B4931EE-0EDB-4F62-8008-68391394C11B}"
